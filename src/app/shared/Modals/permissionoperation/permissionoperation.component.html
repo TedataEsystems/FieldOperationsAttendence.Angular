@@ -1,0 +1,143 @@
+<div #content>
+  <ng-container *ngIf="ISDelete == 1; else Create_Update">
+   <div id="Delete">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{ModalTitle}}</h4>
+      <button type="button" class="close" aria-label="Close"(click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+          <div class="row">
+            <h5> Delete This Mission? </h5>
+          </div>
+
+        <div class="modal-footer">
+      <button type="button" (click)="Delete()" class="btn btn-custom">{{ModalButton}}</button>
+      <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+    </div>
+
+
+    </div>
+   </div>
+  </ng-container>
+
+  <ng-template #Create_Update>
+    <div id="Update">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{ModalTitle}}</h4>
+        <button type="button" class="close" aria-label="Close"(click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+      <div class="modal-body">
+          <form  [formGroup]="PermissionForm" id="pform" (ngSubmit)="Save()">
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="permissionTypeId">Permission Type</label>
+                  <select class="form-control" formControlName="permissionTypeId" >
+                      <option *ngFor="let permissionType of PermissionTypes" value={{permissionType.id}}>{{permissionType.name}}</option>
+                  </select>
+                 <div *ngIf="PermissionForm.controls.permissionTypeId.invalid && PermissionForm.controls.permissionTypeId.touched">
+                  <small class="text-danger">this fieled is required</small>
+                 </div>
+                </div>
+               </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="timeFrom">Time From</label>
+                  <div >
+                    <ejs-datetimepicker formControlName="timeFrom" class="form-control" (blur)="onTillDate()"></ejs-datetimepicker>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="timeTo">Time To</label>
+                  <ejs-datetimepicker formControlName="timeTo" class="form-control" (blur)="onTillDate()"></ejs-datetimepicker>
+                  <div id="dateRange"  style="display:none;font-size: 11px;margin-top: 5px;color: red;" class="error-block" > To Date should be  greater than From Date
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="details">Details</label>
+                  <textarea formControlName="details" class="form-control"></textarea>
+                  <div *ngIf="PermissionForm.controls.details.invalid && PermissionForm.controls.details.touched">
+                    <small class="text-danger">this fieled is required</small>
+                   </div>
+                </div>
+              </div>
+
+              <div  class="col-md-6">
+                <div class="form-group">
+                  <label for="imageId" class="mr-2">Upload File </label> <span style="font-size: 12px;font-style: italic;">Files accepted: jpg, png, pdf, doc</span>
+                  <input type="file" style="display:block;" class="form-control" (change)="onFileChanged($event)">
+                  <div id="upload"  style="display:none;font-size: 11px;margin-top: 5px;color: red;" class="error-block" >Upload file is required </div>
+
+                </div>
+
+              </div>
+              <div  class="col-md-6">
+              <div *ngIf="CurrentPermissionData.images" class="outer">
+                <div *ngFor="let img of CurrentPermissionData.images " (click)="Enlarge($event)">
+
+                    <img *ngIf="(img.imagePath.endsWith('.jpg') || img.imagePath.endsWith('.png')) && !img.imagePath.endsWith('.pdf') && !img.imagePath.endsWith('.docx') && !img.imagePath.endsWith('.doc')" src="{{CurrentUrl}}{{img.imagePath}}" id="imgOfAns" width="150px" height="150px">
+                      <i *ngIf="img.imagePath.endsWith('.pdf') && !img.imagePath.endsWith('.docx') &&  !img.imagePath.endsWith('.doc') && !img.imagePath.endsWith('.jpg') && !img.imagePath.endsWith('.png')" style="font-size:6rem;" aria-hidden="true" class="fa text-danger fa-file-pdf ml-3 mb-1"></i> <br>
+                      <a [href]="CurrentUrl + img.imagePath">  <i *ngIf="(img.imagePath.endsWith('.doc')  || img.imagePath.endsWith('.docx')) && !img.imagePath.endsWith('.pdf') &&  !img.imagePath.endsWith('.jpg') &&  !img.imagePath.endsWith('.png')" style="font-size:6rem;" aria-hidden="true" class="fa text-primary fa-file-word ml-3 mb-1"></i></a> <br>
+                      <a [href]="CurrentUrl + img.imagePath" target="_blank" class="ml-4" style="font-size: 12px;">Preview</a>
+                      <!-- <button class="close-icon " style="top:0" (click)="RemoveImg(img)" alt="Remove Image" >X</button> -->
+                      <button class="close-icon " style="top:0" (click)="RemoveImg(img)" alt="Remove Image" >X</button>
+                  </div>
+                  </div>
+
+              </div>
+
+             </div>
+            </form>
+          <div class="modal-footer">
+        <button id="submit" type="submit"  [disabled] = "!PermissionForm.valid"  form="pform" class="btn btn-custom">{{ModalButton}}</button>
+        <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+      </div>
+
+
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+
+<div class="modal fade" id="confirm-remove-modal" tabindex="-1" role="dialog" aria-labelledby="confirmRemoveCategoryModel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+  <div class="modal-content mr-auto ml-auto w-75">
+    <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+      <i class="far fa-times-circle"></i>
+    </button>
+    <div class="modal-body mt-0">
+      <div id="confirmRemoveModel" class="modal-title text-size-23p mb-3">
+        Remove Category
+      </div>
+      <div class="edit-label">
+        Are you sure you want to remove this Category? Once it is removed it
+        cannot be undone.
+      </div>
+      <div class="row edit-button-group float-right">
+        <button type="button" class="btn domain-button" (click)="removeCategory()">
+          Remove
+        </button>
+        <button type="button" class="btn edit-cancel-button" (click)="cancelConfirmRemoveCategoryModal()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,281 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-calendars/styles/material.css';
+@import '~open-iconic/font/css/open-iconic-bootstrap.css';
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ESPT-Attendence-primary: mat-palette($mat-indigo);
+$ESPT-Attendence-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ESPT-Attendence-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$ESPT-Attendence-theme: mat-light-theme($ESPT-Attendence-primary, $ESPT-Attendence-accent, $ESPT-Attendence-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($ESPT-Attendence-theme);
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ESPT-Attendence-primary: mat-palette($mat-indigo);
+$ESPT-Attendence-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$ESPT-Attendence-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$ESPT-Attendence-theme: mat-light-theme($ESPT-Attendence-primary, $ESPT-Attendence-accent, $ESPT-Attendence-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($ESPT-Attendence-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+@font-face{
+    src: url('./assets/fonts/Roboto/Roboto-Regular.ttf');
+    font-family: 'main';
+}
+@font-face{
+    src: url('./assets/fonts/Tomorrow/Tomorrow-Bold.ttf');
+    font-family: 'logo';
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'main', sans-serif;
+    background-color: #eee;
+    color: #3c4858;
+}
+
+.logo, h1, h2, h3, h4, h5{
+    font-family: 'logo', cursive;
+}
+.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+    position: relative;
+    bottom: -6px;
+    left: -3px;
+    color: #4b2254;
+}
+.mat-form-field.mat-focused .mat-form-field-label{
+    color: #4b2254;
+
+}
+.mat-form-field.mat-focused .mat-form-field-ripple{
+    background-color: #4b2254;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+button.btn{
+    font-size: 15px;
+}
+.page-item.active .page-link, .page-item.hover .page-link  {
+
+    background-color: #4b2254;
+    border-color: #401a48;
+}
+.modal-header{
+    background-color: #4b2254;
+    color: #fff;
+    button:focus{
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
+    .close{
+       color: #fff;
+    }
+}
+.btn-custom{
+    background-color: #4b2254;
+    color: #fff;
+}
+
+
+/*============LOADER==========*/
+#loader{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 999999;
+    background-color:rgba(179, 178, 181, 0.57);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #4b2254;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+
+/*============LOADER==========*/
+
+
+
+table{
+  thead{
+      background-color: #4b2254;
+      th{
+           color: #fff;
+      }
+  }
+}
+select{
+  font-size: 15px;
+}
+
+/*======== image uploaded============*/
+
+
+.outer {
+  // height: 160px;
+  width: 100%;
+  // position: relative;
+}
+.outer div{
+  display: inline-block;
+  padding: 0 5px 5px 0;
+  position: relative;
+  width: 160px;
+  cursor: pointer;
+
+}
+.zoom{
+  position: absolute;
+  top:30%;
+  z-index: 9999999 !important;
+  -ms-transform: scale(2); /* IE 9 */
+  -webkit-transform: scale(2); /* Safari 3-8 */
+  transform: scale(2);
+  cursor: pointer;
+ 
+
+}
+.close-icon {
+  position: absolute;
+  right: 7%;
+  // top: 2%;
+  color:gray;
+  font-size: 16px;
+  background-color: transparent;
+
+}
+
+.inner {
+  position: relative;
+  background: #ccc;
+  height: 40px;
+  width: 100%;
+  margin: 5px;
+}
+/*========file upload button custom============*/
+
+
+input[type="file"]{
+  display: none;
+
+}
+label.label{
+  color: #fff;
+  height: 40px;
+  width: 200px;
+  background-color: #6e4f75;
+  border-radius: 5px;
+  margin: 20px auto 10px 0;
+  top:0;
+  right:0;
+  font-size:18px;
+  display: flex;
+  justify-content: center;
+ align-items: center;
+ font-family: serif;
+ cursor: pointer;
+
+}

@@ -1,0 +1,37 @@
+.login-box{
+    padding: 10px 20px 30px 20px;
+    background-color: #fff;
+    margin-top: 20vh;
+    border-radius: 5px;
+    .logo{
+        border-radius: 3px;
+        background-color: rosybrown;
+        width: 85%;
+        margin: -60px  auto 0 auto;
+        padding-bottom: 15px;
+        background-color: #4b2254;
+        box-shadow: 5px 5px 9px rgba(0,0,0,.15), -5px -5px 9px rgba(0,0,0,.15);
+        img{
+            width: 50px;
+        }
+        h1{
+            font-size: 1.3rem;
+            margin: 0;
+            color: #fff;
+        }
+    }
+    form{
+        margin-top: 40px;
+    }
+}
+
+.mat-form-field{
+    display: block !important
+}
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button{
+    width: 85% !important;
+    margin: 5px auto;
+    display: block !important;
+    background-color: #4b2254 !important;
+    
+}

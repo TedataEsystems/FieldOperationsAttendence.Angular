@@ -1,0 +1,66 @@
+
+  <div id="loader" *ngIf="loader">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+
+  <div class="d-flex justify-content-start my-4">
+    <button *ngIf="CurrentRoleId != 3" class="btn btn-lg btn-dark mb-1" (click)="openmodal()">Add New</button>
+    <button class="btn btn-lg btn-secondary mx-2 mb-1" (click)="exportTabletoexcel()">Export Data</button>
+  </div>
+  <div class="d-flex justify-content-between mb-2">
+   <input style="width:350px;" placeholder="Search.." type="text" [(ngModel)]="searchval" (keyup)="Onsearchchange()">
+   <div>
+    <select *ngIf="CurrentViewRoleId==4 && CurrentRoleId != 3" class="btn-lg  mb-1" [(ngModel)]="CurrentViewSeniorId" (change)="GetTichniciansBySenior()">
+      <option value="0">Select Senior.. </option>
+      <option *ngFor="let Senior of Seniors" value={{Senior.id}}>{{Senior.name}}</option>
+  </select>
+    <select *ngIf="CurrentRoleId != 3" class="  btn-lg  mb-1" [(ngModel)]="CurrentViewRoleId" (change)="ShowUsersByRole()">
+      <option value="0">Select Role.. </option>
+      <option *ngFor="let Role of Roles" value={{Role.id}}>{{Role.name}}</option>
+  </select>
+
+
+   </div>
+
+  </div>
+  <table id="excel-table" class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Emp Id</th>
+        <th scope="col">Name</th>
+        <th scope="col" style="width: 206px;">Department</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col" style="width:30% !important; "></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of Users | slice:(page-1)*pageSize:(page-1) *pageSize + pageSize">
+        <th scope="row">{{ user.employeeNumber }}</th>
+        <td>
+          {{ user.name }}
+        </td>
+        <td>{{ user.teamName}}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td class="text-center">
+          <a *ngIf=" CurrentRoleId != 3" (click)="edit(user)" class="btn btn-warning text-light" style="width: 30%">Edit</a>
+          <a *ngIf="CurrentRoleId != 3" (click)="delete(user)" class="btn btn-danger ml-1 text-light">Delete</a>
+          <a [routerLink]="['/home','profile',user.id]" class="btn btn-info ml-1 text-light">Details</a>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="Users.length" >
+      </ngb-pagination>
+
+      <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+        <option selected [ngValue]="20">20 items per page</option>
+        <option [ngValue]="30">30 items per page</option>
+        <option [ngValue]="50">50 items per page</option>
+        <option [ngValue]="80">80 items per page</option>
+        <option [ngValue]="100">100 items per page</option>
+      </select>
+    </div>

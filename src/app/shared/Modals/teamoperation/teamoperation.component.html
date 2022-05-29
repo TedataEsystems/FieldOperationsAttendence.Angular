@@ -1,0 +1,57 @@
+<div #content>
+    <ng-container *ngIf="ISDelete == 1; else Create_Update">
+     <div id="Delete">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{ModalTitle}}</h4>
+        <button type="button" class="close" aria-label="Close"(click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div class="row">
+              <h5> Delete This Team? </h5>
+            </div>
+
+          <div class="modal-footer">
+        <button type="button" (click)="Delete()" class="btn btn-custom">{{ModalButton}}</button>
+        <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+      </div>
+
+
+      </div>
+     </div>
+    </ng-container>
+
+    <ng-template #Create_Update>
+      <div id="Update">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">{{ModalTitle}}</h4>
+          <button type="button" class="close" aria-label="Close"(click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="TeamForm" id="tform" (ngSubmit)="Save()">
+              <div class="row">
+                <div class="col-md-12">
+                   <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" formControlName="name" class="form-control"  >
+                    <div *ngIf="TeamForm.controls.name.invalid && TeamForm.controls.name.touched">
+                      <small class="text-danger">this fieled is required</small>
+                    </div>
+                    </div>
+                  </div>
+
+               </div>
+              </form>
+            <div class="modal-footer">
+          <button type="submit" [disabled] = "!TeamForm.valid"  form="tform" class="btn btn-custom">{{ModalButton}}</button>
+          <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+        </div>
+
+
+        </div>
+      </div>
+    </ng-template>
+  </div>

@@ -1,0 +1,141 @@
+<div #content>
+    <ng-container *ngIf="ISDelete == 1; else Create_Update">
+     <div id="Delete">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{ModalTitle}}</h4>
+        <button type="button" class="close" aria-label="Close"(click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div class="row">
+              <h5> Delete This User? </h5>
+            </div>
+
+          <div class="modal-footer">
+        <button type="button" (click)="Delete()" class="btn btn-custom">{{ModalButton}}</button>
+        <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+      </div>
+
+
+      </div>
+     </div>
+    </ng-container>
+
+    <ng-template #Create_Update>
+      <div id="Update">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">{{ModalTitle}}</h4>
+          <button type="button" class="close" aria-label="Close"(click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="userForm" id="uform" (ngSubmit)="Save()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="roleId">User Type</label>
+                    <select class="form-control" (change)="ShowSenior(userForm.controls.roleId.value)" formControlName="roleId" >
+                        <option *ngFor="let Role of Roles" value={{Role.id}}>{{Role.name}}</option>
+                    </select>
+                   <div *ngIf="userForm.controls.roleId.invalid && userForm.controls.roleId.touched">
+                    <small class="text-danger">this fieled is required</small>
+                   </div>
+                  </div>
+                 </div>
+
+                <div class="col-md-6" *ngIf="showsenior==4">
+                  <div class="form-group" >
+                    <label for="seniorId">Senior</label>
+                    <select class="form-control" formControlName="seniorId">
+                      <option *ngFor="let Senior of Seniors" value={{Senior.id}}>{{Senior.name}}</option>
+                    </select>
+                    <div *ngIf="userForm.controls.seniorId.invalid && userForm.controls.seniorId.touched">
+                      <small class="text-danger">this fieled is required</small>
+                     </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" formControlName="name"  class="form-control"  >
+                    <div *ngIf="userForm.controls.name.invalid && userForm.controls.name.touched">
+                      <small class="text-danger">Name is required</small>
+                     </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input  formControlName="phoneNumber" class="form-control">
+                    <div *ngIf="userForm.controls.phoneNumber.hasError('minlength') && userForm.controls.phoneNumber.touched">
+                      <small class="text-danger">Invalid Phone number</small>
+                     </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="employeeNumber">Employee Number</label>
+                    <input type="number" formControlName="employeeNumber"  class="form-control" >
+                    <div *ngIf="userForm.controls.employeeNumber.invalid && userForm.controls.name.employeeNumber">
+                      <small class="text-danger">Invalid Employee Number</small>
+                     </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nationalId">National Id</label>
+                    <input type="number" formControlName="nationalId"  class="form-control">
+                    <div *ngIf="userForm.controls.nationalId.invalid && userForm.controls.name.nationalId">
+                      <small class="text-danger">National Id Should be 14 digit</small>
+                     </div>
+                  </div>
+                </div>
+
+                <!-- <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" formControlName="department"  class="form-control">
+                  </div>
+                </div> -->
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" formControlName="location" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="joiningDate">Joining Date</label>
+                    <ejs-datetimepicker formControlName="joiningDate"  class="form-control"></ejs-datetimepicker>
+                  </div>
+                </div>
+
+                <div *ngIf="IsUpdate == 0" class="col-md-6">
+                  <div class="form-group">
+                    <label for="imageId">Image</label>
+                    <!-- <input formControlName="imageId" type="file" class="form-control" (change)="onFileChanged($event)">-->
+                       <input formControlName="imageId" type="file" style="display:block;" class="form-control" (change)="onFileChanged($event)">
+
+                  </div>
+                </div>
+
+               </div>
+              </form>
+            <div class="modal-footer">
+          <button type="submit" [disabled] = "!userForm.valid"   form="uform" class="btn btn-custom">{{ModalButton}}</button>
+          <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+        </div>
+
+
+        </div>
+      </div>
+    </ng-template>
+  </div>

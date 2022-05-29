@@ -1,0 +1,25 @@
+<div class="login-box text-center">
+    <div class="logo">
+        <img src="../../../assets/img/mini_logo.png" alt="">
+        <h1> Field Operation Attendence </h1>
+    </div>
+     <form [formGroup]="LoginForm" (ngSubmit)="login()">
+
+        <mat-form-field class="example-full-width">
+                <mat-icon matPrefix>account_circle</mat-icon>
+                <input (keyup)="hidemsg()" matInput formControlName="username" placeholder="user name" >
+            </mat-form-field>
+
+         <mat-form-field class="example-full-width">
+            <mat-icon matPrefix>lock_open</mat-icon>
+            <input (keyup)="hidemsg()" type="password" matInput formControlName="password" placeholder="password" >
+        </mat-form-field>
+        <div>
+            <button type="submit" [disabled]="!LoginForm.valid" class="btn btn-block btn-dark">Log In</button>
+
+        </div>
+    </form>
+    <br>
+    <p style="color: red;"> {{msg}}</p>
+
+</div>

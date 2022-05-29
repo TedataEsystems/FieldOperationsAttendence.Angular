@@ -1,0 +1,22 @@
+.nav{
+    .logo{
+        margin-bottom: 0 !important;
+        img{
+            width: 40px;
+        }
+    }
+    nav{
+        a{
+            margin:  0 10px;
+            font-size: .8rem !important;
+            &.active{
+                padding: 20px 15px;
+                background-color: #542983;
+                color: #fff !important;
+            }
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+}

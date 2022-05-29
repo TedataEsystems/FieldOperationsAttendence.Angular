@@ -1,0 +1,37 @@
+<div id="loader" *ngIf="loader">
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-lg btn-dark mb-1" (click)="openmodal()">Add New</button>
+  </div>
+  <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let permissiontype of PermissionTypes | slice:(page-1)*pageSize:(page-1) *pageSize + pageSize">
+      
+        <td>
+          {{ permissiontype.name }}
+        </td>
+        <td>
+          <a (click)="edit(permissiontype)"  class="btn btn-warning text-light">Edit</a>
+          <a (click)="delete(permissiontype)" class="btn btn-danger ml-1 text-light">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="PermissionTypes.length" >
+      </ngb-pagination>
+    
+      <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+        <option selected [ngValue]="20">20 items per page</option>
+        <option [ngValue]="30">30 items per page</option>
+        <option [ngValue]="40">40 items per page</option>
+      </select>
+    </div>

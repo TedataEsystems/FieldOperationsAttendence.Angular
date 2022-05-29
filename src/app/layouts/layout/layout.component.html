@@ -1,0 +1,36 @@
+
+<div class="nav d-flex flex-column flex-md-row align-items-center mb-3 bg-white border-bottom shadow-sm">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-center">
+                <h6 class="logo mr-auto"> <img src="../../../assets/img/mini_logo.png"  alt=""> <b>Field Operation Attendence </b> </h6>
+                <nav class="">
+               <a class=" text-dark" [routerLink]="['/home']" routerLinkActive="active" >Home</a>
+                <a *ngIf="CurrentRoleId == 1" class="text-dark" [routerLink]="['/permissiontypes']" routerLinkActive="active">Permission Types</a>
+                <a *ngIf="CurrentRoleId == 1" class="text-dark" [routerLink]="['/teams']" routerLinkActive="active">Departments</a>
+                <a *ngIf="CurrentRoleId == 1 || CurrentRoleId == 2" class="text-dark" [routerLink]="['/logs']" routerLinkActive="active">Logs</a>
+
+
+                <div  ngbDropdown class="d-inline-block">
+                  <a class="text-dark" id="dropdownBasic1" ngbDropdownToggle>
+                    <img  src="../../../assets/img/user.png" class="img-fluid rounded-circle d-inline-block mt--1" width="40" alt="">
+                    <span style="font-size:16px;color:red !important" class="text-dark p-2">{{UserName}}</span>
+                    <img  class="img-fluid rounded-circle d-inline-block mt--1" width="20" alt="">
+                  </a>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+                      <a ngbDropdownItem  [routerLink]="['/changepassword']">Chang Password</a>
+                       <a ngbDropdownItem [routerLink]="['/login']">logout</a>
+                  </div>
+              </div>
+
+                </nav>
+            </div>
+        </div>
+      </div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+                <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
