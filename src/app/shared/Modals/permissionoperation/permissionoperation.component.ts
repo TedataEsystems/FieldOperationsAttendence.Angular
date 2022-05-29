@@ -285,6 +285,7 @@ if ((fromDate !== null && toDate !== null) && fromDate > toDate) {
         }
         this.Permissionrepository.addpermission(model);
         this.close();
+        
       }
       else{
         this.notser.Warning(data.error);
