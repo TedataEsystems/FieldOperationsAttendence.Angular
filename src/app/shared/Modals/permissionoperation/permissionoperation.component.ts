@@ -175,12 +175,12 @@ Upload(id:number)
             this.notser.Warning("Error in Uploading Image..");
           }
       else{
-
         let model:ImageTransacionMsg ={
           key:1,
           image:d.data
         }
         this.ImageReopsitory.addimg(model);
+        this.close();
       }
 
         },
@@ -252,13 +252,13 @@ if ((fromDate !== null && toDate !== null) && fromDate > toDate) {
       (data:any)=>{
         if(data.status == true){
           this.notser.success("Inserted Successfully");
-            this.Upload(data.data.id)
+            this.Upload(data.data.id);
             let model:PermissionTransacionMsg ={
               key:1,
               Permissionmodel:data
             }
             this.Permissionrepository.addpermission(model);
-            this.close();
+            
         }
         else{
           this.notser.Warning(data.error);
@@ -285,7 +285,7 @@ if ((fromDate !== null && toDate !== null) && fromDate > toDate) {
           Permissionmodel:data.data
         }
         this.Permissionrepository.addpermission(model);
-        this.close();
+        // this.close();
       }
       else{
         this.notser.Warning(data.error);
