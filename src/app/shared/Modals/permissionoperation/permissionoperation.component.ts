@@ -193,14 +193,19 @@ Upload(id:number)
 
 RemoveImg(img)
 {
-
- if(confirm("Confirm Deleting This Image?"))
-  {
+  this.DeleteService.openConfirmDialog()
+  .afterClosed().subscribe(res =>{
+    if(res){
+        
+//  if(confirm("Confirm Deleting This Image?"))
+//   {
     this.ImageReopsitory.RemoveImage(img.imageId).subscribe(
       (d:any)=>{
         if(d.status==true){
 
          this.loadstatus=true;
+
+         this.notser.warnSucsess('Deleted successfully!');
           this.CurrentPermissionData.images = this.CurrentPermissionData.images.filter(function(newimg)
           {
               if( newimg.imageId != img.imageId)
@@ -221,11 +226,13 @@ RemoveImg(img)
         this.notser.Warning("Network error");
       }
     );
-  }
+    }
+
 
   else{
        return false;
   }
+})
 }
 
 

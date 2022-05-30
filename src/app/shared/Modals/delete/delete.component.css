@@ -4,8 +4,9 @@
     height: 25px;
     padding: 0px !important;
     background-color: transparent;
-   color: var(--fth-color);
+   color: #fff;
     line-height: 1;
+    float: right;
   }
   /* .cdk-global-overlay-wrapper  .cdk-overlay-pane.confirm-dialog-container{
     position: absolute !important;
@@ -13,8 +14,8 @@
 } */
 mat-toolbar{
   height: 45px;
-  background-color: var(--main-color);
-  color:var(--fth-color) !important;
+  background-color: crimson;
+  color:#fff !important;
 
 }
 span{
@@ -23,6 +24,23 @@ span{
   font-weight: 800;
 }
 #trash{
-  color: var(--fth-color) !important;
+  color: #fff!important;
   font-size: 25px;
 }
+
+
+
+
+.btn-dialog-close{
+  width: 25px;
+  min-width: 0px !important;
+  height: 25px;
+  padding: 0px !important;
+  background-color: transparent;
+ color: #fff;
+  line-height: 1;
+}
+/* .cdk-global-overlay-wrapper  .cdk-overlay-pane.confirm-dialog-container{
+  position: absolute !important;
+  top:20px !important;
+} */

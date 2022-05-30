@@ -238,13 +238,21 @@ select{
  
 
 }
+.cconfirm-dialog-container .mat-dialog-container{
+  /* height: 29.6% !important; */
+  //  height: 165px !important;
+ padding: 0 !important;
+  top: 10px;
+ 
+}
 .close-icon {
   position: absolute;
   right: 7%;
   // top: 2%;
-  color:gray;
+  color:#fff;
   font-size: 16px;
-  background-color: transparent;
+  background-color: crimson;
+  
 
 }
 
@@ -279,3 +287,49 @@ label.label{
  cursor: pointer;
 
 }
+.confirm-dialog-container #close-icon:hover,.confirm1-dialog-container #close-icon:hover, .cconfirm-dialog-container #close-icon:hover{
+  cursor: pointer;
+  }
+  
+  .cconfirm-dialog-container #no-button{
+    height: 40px;
+    width: 50%;
+    background-color: #ffc107;
+    color: #fff;
+    border-radius: 0px;
+    /* border-color: rgb(129 133 140); */
+    line-height: 1;
+ 
+  }
+  
+  .cconfirm-dialog-container #yes-button{
+    height: 40px;
+width: 50%;
+background-color: rgb(202 14 14);
+color: #fff;
+border-radius: 0px;
+/* border-color: rgb(129 133 140); */
+line-height: 1;
+    
+  }
+  
+  .cconfirm-dialog-container span.content-span{
+      padding:  30px 16px;
+      text-align: left;
+      font-size: 16px;
+  }
+  .content-container{
+    margin: 2px;
+    color: #000;
+    display: flex;
+  }
+  .cdk-overlay-container{
+    z-index: 2000;
+    background-color: none !important;
+    background: none !important;
+  }
+  .warn{
+    background-color: crimson;
+    font-weight: 800;
+    color: #fff;
+  }

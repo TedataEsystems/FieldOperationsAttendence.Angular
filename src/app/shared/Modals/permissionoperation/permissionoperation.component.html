@@ -9,12 +9,12 @@
     </div>
     <div class="modal-body">
           <div class="row">
-            <h5> Delete This Mission? </h5>
+            <h5 class="p-3"> Delete This Mission? </h5>
           </div>
 
         <div class="modal-footer">
       <button type="button" (click)="Delete()" class="btn btn-custom">{{ModalButton}}</button>
-      <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+      <button type="button" class=" btn btn-warning text-white" aria-label="Close"(click)="close()">Cancel</button>
     </div>
 
 
@@ -93,7 +93,7 @@
                       <a [href]="CurrentUrl + img.imagePath">  <i *ngIf="(img.imagePath.endsWith('.doc')  || img.imagePath.endsWith('.docx')) && !img.imagePath.endsWith('.pdf') &&  !img.imagePath.endsWith('.jpg') &&  !img.imagePath.endsWith('.png')" style="font-size:6rem;" aria-hidden="true" class="fa text-primary fa-file-word ml-3 mb-1"></i></a> <br>
                       <a [href]="CurrentUrl + img.imagePath" target="_blank" class="ml-4" style="font-size: 12px;">Preview</a>
                       <!-- <button class="close-icon " style="top:0" (click)="RemoveImg(img)" alt="Remove Image" >X</button> -->
-                      <button class="close-icon " style="top:0" (click)="RemoveImg(img)" alt="Remove Image" >X</button>
+                      <input type="button" value="x" class="close-icon " style="top:0" (click)="RemoveImg(img)" alt="Remove Image" >
                   </div>
                   </div>
 
@@ -103,7 +103,7 @@
             </form>
           <div class="modal-footer">
         <button id="submit" type="submit"  [disabled] = "!PermissionForm.valid"  form="pform" class="btn btn-custom">{{ModalButton}}</button>
-        <button type="button" class=" btn btn-custom" aria-label="Close"(click)="close()">Cancel</button>
+        <button type="button" class=" btn btn-warning text-white" aria-label="Close" (click)="close()">Cancel</button>
       </div>
 
 

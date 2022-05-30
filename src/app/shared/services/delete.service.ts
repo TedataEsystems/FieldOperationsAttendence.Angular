@@ -13,11 +13,12 @@ export class DeleteService {
 
   openConfirmDialog(){
    return this.dialog.open(DeleteComponent,{
-      width : '50%',
-      
+      width : '30%',
+      hasBackdrop: false,
+     
       panelClass:'cconfirm-dialog-container',
       disableClose : true,
-      position:{top:"10px"}
+      position:{top:"70px"}
     })
     
   }

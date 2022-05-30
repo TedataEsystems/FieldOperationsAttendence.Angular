@@ -15,7 +15,7 @@ import { ReportService } from 'src/app/shared/services/report.service';
 import { PermissiontyperepositoryService } from 'src/app/shared/services/permissiontyperepository.service';
 import { Permissiontypemodel } from 'src/app/shared/models/permissiontypemodel';
 import * as moment from 'moment';
-
+import { DeleteService } from 'src/app/shared/services/delete.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -87,6 +87,7 @@ image:File;
     private UserReopsitory:UserrepositoryService,
     private ImageReopsitory:ImagerepositoryService,
     private report:ReportService,
+    private DeleteService : DeleteService
 
   )
   {
@@ -177,9 +178,11 @@ image:File;
 
   RemoveImg(img)
   {
-
-   if(confirm("Confirm Deleting This Image?"))
-    {
+    this.DeleteService.openConfirmDialog()
+    .afterClosed().subscribe(res =>{
+      if(res){
+  //  if(confirm("Confirm Deleting This Image?"))
+  //   {
       this.loader=true;
       this.ImageReopsitory.RemoveImage(img.imageId).subscribe(
         (d:any)=>{
@@ -205,6 +208,7 @@ image:File;
     else{
          return false;
     }
+  })
   }
 
   exportTabletoexcel(): void
