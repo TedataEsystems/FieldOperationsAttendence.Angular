@@ -19,7 +19,7 @@ import { TeamsComponent } from './pages/teams/teams.component';
 import { TeamoperationComponent } from './shared/Modals/teamoperation/teamoperation.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule, MatSnackBarModule, MatToolbarModule} from '@angular/material';
+import {MatNativeDateModule, MatProgressBarModule, MatSnackBarModule, MatToolbarModule} from '@angular/material';
 import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
 import { PermissionTypesComponent } from './pages/permission-types/permission-types.component';
 import { PermissionTypeOperationComponent } from './shared/Modals/permission-type-operation/permission-type-operation.component';
@@ -83,7 +83,8 @@ import { DeleteComponent } from './shared/Modals/delete/delete.component';
     RxReactiveFormsModule,
     MatIconModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [UserrepositoryService],
   bootstrap: [AppComponent]

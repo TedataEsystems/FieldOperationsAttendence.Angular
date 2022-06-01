@@ -18,7 +18,7 @@ export class DeleteService {
      
       panelClass:'cconfirm-dialog-container',
       disableClose : true,
-      position:{top:"70px"}
+      position:{top:"110px"}
     })
     
   }

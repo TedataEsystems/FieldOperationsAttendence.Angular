@@ -58,7 +58,7 @@
           <td>
             <!-- userobg.imagePath -->
           <div *ngIf="userobg.images" class="outer">
-            <div *ngFor="let img of userobg.images " (click)="Enlarge($event)">
+            <div *ngFor="let img of userobg.images " >
                 <img src="{{CurrentUrl}}{{img.imagePath}}"  id="imgOfAns" width="150px" height="150px">
                 <button *ngIf="CurrentRoleId == 1 || CurrentRoleId == 2" class="close-icon" alt="Remove Image" (click)="RemoveImg(img)">X</button>
               </div>

@@ -70,25 +70,29 @@
                   <label for="details">Details</label>
                   <textarea formControlName="details" class="form-control"></textarea>
                   <div *ngIf="PermissionForm.controls.details.invalid && PermissionForm.controls.details.touched">
-                    <small class="text-danger">this fieled is required</small>
+                    <small class="text-danger">this field is required</small>
                    </div>
                 </div>
               </div>
 
-              <div  class="col-md-6">
+              <div  class="col-md-6 pb-3">
                 <div class="form-group">
-                  <label for="imageId" class="mr-2">Upload File </label> <span style="font-size: 12px;font-style: italic;">Files accepted: jpg, png, pdf, doc</span>
+                  <label for="imageId" class="mr-2">Upload File </label>
+                   <span style="font-size: 12px;font-style: italic;">Files accepted: jpg, png, pdf, doc</span>
                   <input type="file" style="display:block;" class="form-control" (change)="onFileChanged($event)">
                   <div id="upload"  style="display:none;font-size: 11px;margin-top: 5px;color: red;" class="error-block" >Upload file is required </div>
 
                 </div>
+                <mat-progress-bar class="progress-bar" mode="indeterminate"
+                [value]="uploadProgress" *ngIf="uploadProgress">
 
+                 </mat-progress-bar>
               </div>
               <div  class="col-md-6">
               <div *ngIf="CurrentPermissionData.images" class="outer">
-                <div *ngFor="let img of CurrentPermissionData.images " (click)="Enlarge($event)">
-
-                    <img *ngIf="(img.imagePath.endsWith('.jpg') || img.imagePath.endsWith('.png')) && !img.imagePath.endsWith('.pdf') && !img.imagePath.endsWith('.docx') && !img.imagePath.endsWith('.doc')" src="{{CurrentUrl}}{{img.imagePath}}" id="imgOfAns" width="150px" height="150px">
+                <div *ngFor="let img of CurrentPermissionData.images " >
+                  
+                    <img   *ngIf="(img.imagePath.endsWith('.jpg') || img.imagePath.endsWith('.png')) && !img.imagePath.endsWith('.pdf') && !img.imagePath.endsWith('.docx') && !img.imagePath.endsWith('.doc')" src="{{CurrentUrl}}{{img.imagePath}}" id="imgOfAns" width="150px" height="150px">
                       <i *ngIf="img.imagePath.endsWith('.pdf') && !img.imagePath.endsWith('.docx') &&  !img.imagePath.endsWith('.doc') && !img.imagePath.endsWith('.jpg') && !img.imagePath.endsWith('.png')" style="font-size:6rem;" aria-hidden="true" class="fa text-danger fa-file-pdf ml-3 mb-1"></i> <br>
                       <a [href]="CurrentUrl + img.imagePath">  <i *ngIf="(img.imagePath.endsWith('.doc')  || img.imagePath.endsWith('.docx')) && !img.imagePath.endsWith('.pdf') &&  !img.imagePath.endsWith('.jpg') &&  !img.imagePath.endsWith('.png')" style="font-size:6rem;" aria-hidden="true" class="fa text-primary fa-file-word ml-3 mb-1"></i></a> <br>
                       <a [href]="CurrentUrl + img.imagePath" target="_blank" class="ml-4" style="font-size: 12px;">Preview</a>

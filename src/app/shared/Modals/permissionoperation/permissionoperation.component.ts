@@ -16,6 +16,7 @@ import { DeleteService } from '../../services/delete.service';
 
 import * as $ from "jquery";
 import { NotificationService } from '../../services/notification.service';
+import { HttpEventType } from '@angular/common/http';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class PermissionoperationComponent implements OnInit {
  ModalButton;
  CurrentUrl;
  PermissionForm;
+ uploadProgress:number;
  loadstatus=false;
  PermissionTypes: Permissiontypemodel[];
  CurrentPermissionData: Permissionmodel=
@@ -94,6 +96,10 @@ onFileChanged(event) {
   var ext = file_name_array[file_name_array.length - 1];
   if( ext =="jpg"|| ext =="jpeg" || ext == "JPEG" || ext =="JPG" || ext == "PNG" || ext =="png"|| ext =="pdf" || ext =="docx" || ext =="doc" )
   {
+    if (event.type == HttpEventType.UploadProgress) {
+      this.uploadProgress = Math.round(100 * (event.loaded / event.total));
+    }
+    
     if(this.PermissionForm.valid){
       $('#submit').removeAttr('disabled');
     }
