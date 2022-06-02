@@ -185,6 +185,7 @@ Upload(id:number)
           key:1,
           image:d.data
         }
+        this.CurrentPermissionData.images.push(d.data);
         this.ImageReopsitory.addimg(model);
       }
 
@@ -264,12 +265,12 @@ if ((fromDate !== null && toDate !== null) && fromDate > toDate) {
       (data:any)=>{
         if(data.status == true){
           this.notser.success("Inserted Successfully");
-            this.Upload(data.data.id)
             let model:PermissionTransacionMsg ={
               key:1,
               Permissionmodel:data
             }
             this.Permissionrepository.addpermission(model);
+            this.Upload(data.data.id);
             this.close();
         }
         else{
