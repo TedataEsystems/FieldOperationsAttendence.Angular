@@ -10,6 +10,7 @@ export class Usermodel {
         public  userPassword :string,
         public  nationalId :string,
         public  phoneNumber :string,
+        public  companyName :string,
         public  location :string,
         public  seniorId :number,
         public  teamId :number,

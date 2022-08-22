@@ -8,6 +8,7 @@ import { UserTransacionMsg } from '../../models/user-transacion-msg';
 import { GlobalsettingsService } from '../../services/globalsettings.service';
 import { ImagerepositoryService } from '../../services/imagerepository.service';
 import { ImageModel } from '../../models/ImageModel';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-useroperation',
@@ -27,6 +28,7 @@ export class UseroperationComponent implements OnInit {
  CurrentUserData:Usermodel = {"id":0,
                           "name":'',
                           "phoneNumber":'',
+                          "companyName":'',
                           "department":'',
                           "userPassword":'',
                           "nationalId":'',
@@ -76,6 +78,7 @@ export class UseroperationComponent implements OnInit {
       seniorId: [this.CurrentUserData.seniorId],
       name: [this.CurrentUserData.name, [Validators.required]],
       phoneNumber: [this.CurrentUserData.phoneNumber,[Validators.required]],
+      companyName: [this.CurrentUserData.companyName],
       // ,[Validators.minLength(11),Validators.maxLength(14)]
       employeeNumber: [this.CurrentUserData.employeeNumber,[Validators.required]],
       // ,[Validators.minLength(3),Validators.maxLength(6)]
@@ -223,7 +226,10 @@ debugger;
           if(d.status != true)
           {
             console.log(d.error);
-            alert(d.error);
+           // Swal.fire(
+            // d.error
+            //)
+             alert(d.error);
           }
           else
           {
@@ -250,7 +256,9 @@ debugger;
    else
    {
     // update
-    if(this.userForm.value.roleId != 4){
+    if(this.userForm.value.roleId != 4)
+    {
+      debugger
       this.userForm.value.seniorId=-1;
     }
     else {
@@ -261,6 +269,7 @@ debugger;
     }
     this.UserReopsitory.PutUser(this.userForm.value).subscribe(
       (d:Usermodel)=>{
+        debugger
         if(d.status != true)
           {
             console.log(d.error);

@@ -107,6 +107,7 @@ getUser(): Observable<UserTransacionMsg> {
     user.roleId= Number(user.roleId);
     user.imageId=0;
     user.employeeNumber = user.employeeNumber.toString();
+    user.companyName=user.companyName;
     user.nationalId = user.nationalId.toString();
     console.log(user);
     return this.http.put(this.settings.Url()+'users',user);

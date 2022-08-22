@@ -26,6 +26,7 @@ curentid;
 userobg:Usermodel = {"id":0,
 "name":'',
 "phoneNumber":'',
+"companyName":'',
 "department":'',
 "userPassword":'',
 "nationalId":'',
